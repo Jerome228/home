@@ -25,12 +25,14 @@ SECRET_KEY = ')@7g!#9#ybdp(zffh12s=&z^6gh5^n*y=0ft-=)cehh)_@9za^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'xmas',
+    'finances',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
