@@ -1,0 +1,31 @@
+{% extends 'users/layout.html' %}
+
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'users/style.css' %}">
+{% endblock %}
+
+{% block title %}
+Connexion
+{% endblock %}
+
+{% block body %}
+<body>
+    <div class="login-dark">
+        <form method="post" action="{% url 'users:login' %}">
+            {% csrf_token %}
+            <h2 class="sr-only">Connexion</h2>
+            {% if messages %}
+            <div class="alert alert-{{ messages.level }}" role="alert">{{ messages.text }}</div>
+            {% endif %}
+            <div class="illustration"><i class="fas fa-user-lock"></i></div>
+            <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Nom d'utilisateur"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Mot de passe">
+            </div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Connexion</button></div>
+            <div class="forgot">Pas de compte? Demander à @Diplo__</div>
+        </form>
+    </div>
+    </body>
+{% endblock %}

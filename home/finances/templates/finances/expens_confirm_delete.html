@@ -1,0 +1,9 @@
+{% extends 'finances/layout.html' %}
+{% block body %}
+<h2>Confirmation</h2>
+<form method="post">
+    {% csrf_token %}
+    <p>Supprimer définitivement <a href="{{ object.get_absolute_url }}">{{ expens }}</a>?</p>
+    <input class="btn btn-danger" type="submit" value="Supprimer">
+</form>
+{% endblock %}

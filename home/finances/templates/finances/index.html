@@ -1,0 +1,11 @@
+{% extends 'finances/layout.html' %}
+{% block body %}
+<h3>Dépenses du mois</h3>
+{% for person,expens in data.items %}
+<p>{{ person }}: {{ expens }}€</p>
+{% empty %}
+Pas encore de dépenses.
+{% endfor %}
+<hr/>
+Total: {{ total }}€
+{% endblock %}

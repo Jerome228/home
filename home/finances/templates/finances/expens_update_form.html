@@ -1,0 +1,10 @@
+{% extends 'finances/layout.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<h2>Mise à jour de la dépense</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <input type="submit" value="Enregistrer">
+</form>
+{% endblock %}

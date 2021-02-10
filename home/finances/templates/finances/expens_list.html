@@ -1,0 +1,28 @@
+{% extends 'finances/layout.html' %}
+{% block body %}
+<h2>Liste des dépenses</h2>
+<div class="d-flex flex-wrap justify-content-start">
+    {% for expens in object_list %}
+    <div class="card border-primary m-1" style="max-width: 25%; min-width: 20%;">
+        <div class="card-header">
+            <div class="d-flex justify-content-between">
+                <p class="btn btn-sm btn-primary">{{ expens.amount }}€</p>
+                <p>{{ expens.person }}</p>
+            </div>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ expens.title }}</h5>
+            <div class="card-text">
+                <p>{{ expens.comment }}</p>
+            </div>
+        </div>
+        <div class="card-footer bg-transparent d-flex flex-row-reverse">
+            <a class="btn btn-outline-secondary btn-sm float-right" href="{{ expens.get_absolute_url }}"><i
+                    class="fas fa-expand-arrows-alt"></i></a>
+        </div>
+    </div>
+    {% empty %}
+    Pas de dépenses pour l'instant.
+    {% endfor %}
+</div>
+{% endblock %}

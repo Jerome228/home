@@ -1,0 +1,11 @@
+{% extends 'xmas/layout.html' %}
+{% block title %}
+    Xmas
+{% endblock %}
+{% block body %}
+        {% if xmas %}
+            <h1 class="imp">YES</h1>
+        {% else %}
+            <h1 class="imp">NO</h1>
+        {% endif %}
+{% endblock %}

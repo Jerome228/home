@@ -1,0 +1,13 @@
+{% extends 'users/layout.html' %}
+{% block title %}
+    Accueil
+{% endblock %}
+{% block body %}
+<h2>Accueil</h2>
+<div>
+    <p>{{ greetings }} {{ user.first_name }} !</p>
+    <p>
+        <a href="{% url 'users:logout' %}">Deconnexion</a>
+    </p>
+</div>
+{% endblock %}
