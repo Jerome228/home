@@ -1,0 +1,33 @@
+{% extends 'finances/layout.html' %}
+{% block body %}
+
+<div class="jumbotron">
+    <h3 class="display-4">{{object}}</h3>
+    <p class="lead">{{ object.comment }}</p>
+    <hr class="my-4">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Montant</th>
+                <th scope="col">{{ object.amount }}€</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Date</td>
+                <td>{{ object.ddate|date }}</td>
+            </tr>
+            <tr>
+                <td>Date d'enrégistrement</td>
+                <td>{{ object.added|date }}</td>
+            </tr>
+            <tr>
+                <td>Date de modification</td>
+                <td>{{ object.updated|date }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{% url 'finances:salary_update' object.pk %}"><i class="fas fa-edit"></i> Modifier</a>
+    <a class="btn btn-secondary" href="{% url 'finances:salary_delete' object.pk %}"><i class="fas fa-trash"></i> Suprimer</a>
+</div>
+{% endblock %}

@@ -6,8 +6,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.views.generic import ListView
 from django.http import JsonResponse
-from .models import Expens
-from .forms import ExpensForm
+from .models import Expens, Salary
+from .forms import ExpensForm, SalaryForm
 
 
 # Create your views here.
@@ -90,3 +90,31 @@ def expensChart(request):
         'wages': wages,
         'topay': toPay,
     })
+
+class SalaryList(ListView):
+    model = Salary
+
+
+class SalaryDetailView(DetailView):
+
+    model = Salary
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        return context
+
+
+class SalaryCreate(CreateView):
+    model = Salary
+    form_class = SalaryForm
+
+
+class SalaryUpdate(UpdateView):
+    model = Salary
+    form_class = SalaryForm
+
+
+class SalaryDelete(DeleteView):
+    model = Salary
+    success_url = reverse_lazy('finances:salary_list')

@@ -13,4 +13,11 @@ urlpatterns = [
     path('depenses/modifier/<int:pk>', views.ExpensUpdate.as_view(), name="expens_update"),
     path('depenses/suppression/<int:pk>', views.ExpensDelete.as_view(), name="expens_delete"),
     path('api/chartJSON', views.expensChart, name='chart_json'),
+    path('salaires/', views.SalaryList.as_view(), name="salary_list"),
+    path('salaires/ajouter', views.SalaryCreate.as_view(), name="salary_add"),
+    path('salaires/<int:pk>/',
+         views.SalaryDetailView.as_view(), 
+         name="salary_detail"),
+    path('salaires/modifier/<int:pk>', views.SalaryUpdate.as_view(), name="salary_update"),
+    path('salaires/suppression/<int:pk>', views.SalaryDelete.as_view(), name="salary_delete"),
 ]

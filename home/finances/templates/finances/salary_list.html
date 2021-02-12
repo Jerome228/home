@@ -1,0 +1,51 @@
+{% extends 'finances/layout.html' %}
+
+{% load static %}
+
+{% block head %}
+<link href="{% static 'finances/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="main-body">
+    <div class="container">
+          <div class="row gutters-sm">
+<h3>Liste des salaires</h3>
+    {% for salary in object_list %}
+      <div class="d-style bgc-white btn btn-brc-tp btn-outline-green btn-h-outline-green btn-a-outline-green w-100 my-2 py-3 shadow-sm border-2">
+        <div class="row align-items-center">
+          <div class="col-12 col-md-4">
+            <h4 class="pt-3 text-170 text-600 text-green-d1 letter-spacing">
+                {{ salary.person.first_name }}
+            </h4>
+            <div class="text-secondary-d2 text-120">
+              </span><span class="text-180">{{ salary.amount }}</span> €
+            </div>
+          </div>
+          <ul class="list-unstyled mb-0 col-12 col-md-4 text-dark-l1 text-90 text-left my-4 my-md-0">
+            <li>
+              <i class="fa fa-check text-success-m2 text-110 mr-2 mt-1"></i>
+              <span>
+                <span class="text-110">Salaire au {{ salary.ddate|date:'m/Y' }}</span>
+              </span>
+            </li>
+
+            <li class="mt-25">
+              
+              <span class="text-110">
+                {{ salary.comment }}
+            </span>
+            </li>
+          </ul>
+
+          <div class="col-12 col-md-4 text-center">
+            <a href="{{ salary.get_absolute_url }}" class="f-n-hover btn btn-success btn-raised px-4 py-25 w-75 text-600">Détails</a>
+          </div>
+        </div>
+
+      </div>
+    {% empty %}
+    Pas de salaires pour l'instant.
+    {% endfor %}
+</div>
+{% endblock %}
