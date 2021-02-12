@@ -1,11 +1,42 @@
 {% extends 'finances/layout.html' %}
+
+{% load static %}
+
 {% block body %}
-<h3>Dépenses du mois</h3>
+<div class="jumbotron jumbotron-fluid">
+      <h3 class="text-center display-4">Dépenses du mois: {{ total }}€</h3>
+      <p class="lead text-center">Un bilan des dépenses du mois en cours.</p>
+</div>
+
+<div class="d-flex flex-wrap justify-content-around p-2 bg-light text-dark">
 {% for person,expens in data.items %}
 <p>{{ person }}: {{ expens }}€</p>
 {% empty %}
 Pas encore de dépenses.
 {% endfor %}
-<hr/>
-Total: {{ total }}€
+</div>
+<hr />
+<div id="chartsContainer" data-url="{% url 'finances:chart_json' %}" class="d-flex flex-wrap justify-content-around">
+<div class="col-sm-12 col-md-6 col-lg-3 mt-3">
+    <canvas id="myChart"></canvas>
+</div>
+<div class="col-sm-12 col-md-6 col-lg-3 mt-3">
+    <canvas id="myChart1"></canvas>
+</div>
+<div class="col-sm-12 col-md-6 col-lg-3 mt-3">
+    <canvas id="myChart2"></canvas>
+</div>
+<div class="col-sm-12 col-md-6 col-lg-3 mt-3">
+    <canvas id="myChart3"></canvas>
+</div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+    integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+    crossorigin="anonymous"></script>
+<script type="text/javascript" src="{% static 'finances/piechart.js' %}"></script>
 {% endblock %}

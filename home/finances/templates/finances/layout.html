@@ -47,7 +47,7 @@
                             <li><a class="dropdown-item" href="#"><i class="fas fa-chart-line"></i> Bilans</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ml-auto">
                         <a class="nav-link " href="{% url 'users:logout' %}" tabindex="-1" aria-disabled="true"><i class="fas fa-power-off"></i> Deconnexion
                         </a>
                     </li>
@@ -59,6 +59,8 @@
         {% block body %}
         {% endblock %}
     </div>
+    {% block scripts %}
+    {% endblock %}
 </body>
 
 </html>

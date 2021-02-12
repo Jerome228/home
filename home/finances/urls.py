@@ -12,4 +12,5 @@ urlpatterns = [
          name="expens_detail"),
     path('depenses/modifier/<int:pk>', views.ExpensUpdate.as_view(), name="expens_update"),
     path('depenses/suppression/<int:pk>', views.ExpensDelete.as_view(), name="expens_delete"),
+    path('api/chartJSON', views.expensChart, name='chart_json'),
 ]
